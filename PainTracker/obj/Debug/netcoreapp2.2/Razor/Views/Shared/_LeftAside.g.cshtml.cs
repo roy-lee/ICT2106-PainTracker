@@ -24,7 +24,7 @@ using PainTracker.Models;
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"25b082ed52baf12934280e7316ec2bf2d59d133e", @"/Views/Shared/_LeftAside.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"413b5b8409aa6b8397b24276d425b7b7a248eca9", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8eb9dd41657b3f5e54f045f89ed89422f95aa016", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__LeftAside : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998
@@ -295,8 +295,7 @@ WriteAttributeValue("", 4469, Url.Action("Create", "Tours"), 4469, 30, false);
                                     <li class=""m-menu__item "" aria-haspopup=""true""><a href=""components/timeline/timeline-1.html"" class=""m-menu__link ""><i class=""m-menu__link-bullet m-menu__link-bullet--dot""><span></span></i><span class=""m-menu__link-text"">Timeline 1</span></a></li>
                                     <li class=""m-menu__item "" aria-haspopup=""true""><a href=""components/timeline/timeline-2.html"" class=""m-menu__link ""><i class=""m-menu__link-bullet m-menu__link-bullet--dot""><span></span></i><span class=""m-menu__link-text"">Timeline 2</span></a></li>
                                 </ul>
-                            </div>
-");
+                            </div>");
             WriteLiteral(@"
                         </li>
                         <li class=""m-menu__item  m-menu__item--submenu"" aria-haspopup=""true"" m-menu-submenu-toggle=""hover"">

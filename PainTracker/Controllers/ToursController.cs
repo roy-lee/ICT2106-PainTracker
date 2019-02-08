@@ -6,46 +6,34 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PainTracker.Models;
-using PainTracker.Data;
 
 namespace PainTracker.Controllers
 {
     public class ToursController : Controller
     {
-        private TourGateway tourGateway = new TourGateway();
-        
-        // GET: Tours
-        public IActionResult Index()
+        private readonly TourContext _context;
+
+        public ToursController(TourContext context)
         {
-            return View(tourGateway.SelectAll());
+            _context = context;
         }
 
-        // Get: Tours/Confirm
-        public IActionResult Confirm(int? id)
+        // GET: Tours
+        public async Task<IActionResult> Index()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            Tour tour = tourGateway.SelectById(id);
-            //await _context.Tours.FirstOrDefaultAsync(m => m.Id == id);
-            if (tour == null)
-            {
-                return NotFound();
-            }
-
-            return View(tour);
+            return View(await _context.Tour.ToListAsync());
         }
 
         // GET: Tours/Details/5
-        public IActionResult Details(int? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            Tour tour = tourGateway.SelectById(id);
-            //await _context.Tours.FirstOrDefaultAsync(m => m.Id == id);
+
+            var tour = await _context.Tour
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (tour == null)
             {
                 return NotFound();
@@ -65,27 +53,26 @@ namespace PainTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Name,Description,Length,Price,Rating,IncludesMeals")] Tour tour)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,Length,Price,Rating,IncludesMeals")] Tour tour)
         {
             if (ModelState.IsValid)
             {
-                tourGateway.Insert(tour);
-                tourGateway.Save();
-                var newlyCreatedId = tour.Id;
-                return RedirectToAction(nameof(Confirm), new { id = newlyCreatedId });
+                _context.Add(tour);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
             return View(tour);
         }
 
         // GET: Tours/Edit/5
-        public IActionResult Edit(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var tour = tourGateway.SelectById(id);
+            var tour = await _context.Tour.FindAsync(id);
             if (tour == null)
             {
                 return NotFound();
@@ -98,7 +85,7 @@ namespace PainTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,Name,Description,Length,Price,Rating,IncludesMeals")] Tour tour)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Length,Price,Rating,IncludesMeals")] Tour tour)
         {
             if (id != tour.Id)
             {
@@ -109,12 +96,12 @@ namespace PainTracker.Controllers
             {
                 try
                 {
-                    tourGateway.Update(tour);
-                    tourGateway.Save();
+                    _context.Update(tour);
+                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (tourGateway.SelectById(tour.Id) == null)
+                    if (!TourExists(tour.Id))
                     {
                         return NotFound();
                     }
@@ -129,14 +116,15 @@ namespace PainTracker.Controllers
         }
 
         // GET: Tours/Delete/5
-        public IActionResult Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var tour = tourGateway.SelectById(id);
+            var tour = await _context.Tour
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (tour == null)
             {
                 return NotFound();
@@ -148,55 +136,17 @@ namespace PainTracker.Controllers
         // POST: Tours/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var tour = tourGateway.SelectById(id);
-            tourGateway.Delete(id);
-            tourGateway.Save();
+            var tour = await _context.Tour.FindAsync(id);
+            _context.Tour.Remove(tour);
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-    }
 
-    public class TourGateway : ITourGateway
-    {
-        internal PainTrackerContext db = new PainTrackerContext();
-
-        public IEnumerable<Tour> SelectAll()
+        private bool TourExists(int id)
         {
-            Console.WriteLine("Interface gatway: public IEnumerable<Tour> SelectAll()");
-            return db.Tour.ToList();
+            return _context.Tour.Any(e => e.Id == id);
         }
-
-        public Tour SelectById(int? id)
-        {
-            Tour tour = db.Tour.Find(id);
-            return tour;
-        }
-
-        public void Insert(Tour tour)
-        {
-            db.Tour.Add(tour);
-            Save();
-        }
-
-        public void Update(Tour tour)
-        {
-            db.Tour.Update(tour);
-            Save();
-        }
-
-        public Tour Delete(int? id)
-        {
-            Tour tour = db.Tour.Find(id);
-            db.Tour.Remove(tour);
-            Save();
-            return tour;
-        }
-        
-        public void Save()
-        {
-            db.SaveChanges();
-        }
-        
     }
 }
