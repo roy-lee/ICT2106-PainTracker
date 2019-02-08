@@ -36,5 +36,13 @@ Checkout to your respective branch
 git checkout <your_module_name>
 ```
 
+Update your local database
+In Visual Studio > Nuget Package Manager > Package Manager Console
+
+```
+Add-Migration InitialCreate
+Update-Database
+```
+
 **Remember to commit your work with message before pushing!
 Thank you!**
