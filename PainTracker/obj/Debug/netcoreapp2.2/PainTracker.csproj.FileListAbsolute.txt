@@ -1,0 +1,11 @@
+\\Mac\Home\Desktop\ICT2106-PainTracker\PainTracker\bin\Debug\netcoreapp2.2\PainTracker.deps.json
+\\Mac\Home\Desktop\ICT2106-PainTracker\PainTracker\bin\Debug\netcoreapp2.2\PainTracker.runtimeconfig.json
+\\Mac\Home\Desktop\ICT2106-PainTracker\PainTracker\bin\Debug\netcoreapp2.2\PainTracker.runtimeconfig.dev.json
+\\Mac\Home\Desktop\ICT2106-PainTracker\PainTracker\bin\Debug\netcoreapp2.2\PainTracker.dll
+\\Mac\Home\Desktop\ICT2106-PainTracker\PainTracker\bin\Debug\netcoreapp2.2\PainTracker.pdb
+\\Mac\Home\Desktop\ICT2106-PainTracker\PainTracker\obj\Debug\netcoreapp2.2\PainTracker.csprojAssemblyReference.cache
+\\Mac\Home\Desktop\ICT2106-PainTracker\PainTracker\obj\Debug\netcoreapp2.2\PainTracker.csproj.CoreCompileInputs.cache
+\\Mac\Home\Desktop\ICT2106-PainTracker\PainTracker\obj\Debug\netcoreapp2.2\PainTracker.AssemblyInfoInputs.cache
+\\Mac\Home\Desktop\ICT2106-PainTracker\PainTracker\obj\Debug\netcoreapp2.2\PainTracker.AssemblyInfo.cs
+\\Mac\Home\Desktop\ICT2106-PainTracker\PainTracker\obj\Debug\netcoreapp2.2\PainTracker.dll
+\\Mac\Home\Desktop\ICT2106-PainTracker\PainTracker\obj\Debug\netcoreapp2.2\PainTracker.pdb
