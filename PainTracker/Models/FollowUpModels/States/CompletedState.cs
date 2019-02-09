@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 //TODO: Implement Methods
-namespace PainTracker.Models.FollowUp
+namespace PainTracker.Models.FollowUpModels.States
 {
-    public class PendingQuestionState : IFollowUpState
+    public class CompletedState : IFollowUpState
     {
         public void AskQuestion()
         {

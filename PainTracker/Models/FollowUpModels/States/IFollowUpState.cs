@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace PainTracker.Models.FollowUp
+﻿namespace PainTracker.Models.FollowUpModels.States
 {
     public interface IFollowUpState
     {

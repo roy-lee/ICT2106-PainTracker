@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PainTracker.Models.FollowUpModels.States;
 
 //TODO: Implement Methods
 namespace PainTracker.Models.FollowUp
 {
-    public class PendingAdviceState : IFollowUpState
+    public class CancelledState : IFollowUpState
     {
         public void AskQuestion()
         {

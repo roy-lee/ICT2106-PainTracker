@@ -1,25 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PainTracker.Models;
+using PainTracker.Data.FollowUp;
+using PainTracker.Models.FollowUpModels;
+using PainTracker.Models.FollowUpModels.States;
 
 namespace PainTracker.Controllers
 {
-    public class FollowUpsController : Controller
+    public class FollowUpController : Controller
     {
         // Temporary List to simulate database.
-        static List<FollowUps> FollowUpList = new List<FollowUps>();
+        static List<FollowUpDTO> FollowUpList = new List<FollowUpDTO>();
 
-        // GET: FollowUps
+        private FollowUpDBMapper followUpDbMapper;
+
+        public FollowUpController(IMapper mapper)
+        {
+            followUpDbMapper = new FollowUpDBMapper(mapper);
+            System.Diagnostics.Debug.WriteLine("FollowUpController created");
+        }
+
+        // GET: FollowUp
         public ActionResult Index()
         {
             for (int i = 1; i <= 10; i++)
             {
-                FollowUpList.Add(new FollowUps(i));
+                FollowUpDTO insertFollowUps = new FollowUpDTO();
+                insertFollowUps.FollowUpId = 1;
+                FollowUpList.Add(insertFollowUps);
             }
+
+            FollowUp fuvm = new FollowUp();
+            fuvm.State = new PendingAdviceState();
+            followUpDbMapper.Insert(fuvm);
+            followUpDbMapper.Save();
 
             return View(FollowUpList);
         }
