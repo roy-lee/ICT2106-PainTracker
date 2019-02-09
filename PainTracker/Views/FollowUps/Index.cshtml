@@ -1,0 +1,45 @@
+﻿@model IEnumerable<FollowUps>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FollowUpId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateGenerated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NotifyPatientFlag)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FollowUpId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State.GetType().Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateGenerated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotifyPatientFlag)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
