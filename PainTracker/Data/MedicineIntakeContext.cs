@@ -29,7 +29,7 @@ namespace PainTracker.Models
         }
 
         public DbSet<Medicine> MedicineModel { get; set; }
-        public DbSet<Prescription> PrescriptionModel { get; set; }
+        public DbSet<Instruction> PrescriptionModel { get; set; }
         public DbSet<Image> ImageModel { get; set; }
         public DbSet<Logger> Logger { get; set; }
         //public DbSet<MedicineIntakeEvent> MedicineIntakeEventModel { get; set; }

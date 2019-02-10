@@ -12948,23 +12948,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\roylee\\.nuget\\packages\\": {},
+    "C:\\Users\\bowei\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "\\\\Mac\\Home\\Desktop\\ICT2106-PainTracker\\PainTracker\\PainTracker.csproj",
+      "projectUniqueName": "\\\\Mac\\Home\\GoogleDriveSeptember\\VSWorkspace\\PainTracker\\PainTracker\\PainTracker.csproj",
       "projectName": "PainTracker",
-      "projectPath": "\\\\Mac\\Home\\Desktop\\ICT2106-PainTracker\\PainTracker\\PainTracker.csproj",
-      "packagesPath": "C:\\Users\\roylee\\.nuget\\packages\\",
-      "outputPath": "\\\\Mac\\Home\\Desktop\\ICT2106-PainTracker\\PainTracker\\obj\\",
+      "projectPath": "\\\\Mac\\Home\\GoogleDriveSeptember\\VSWorkspace\\PainTracker\\PainTracker\\PainTracker.csproj",
+      "packagesPath": "C:\\Users\\bowei\\.nuget\\packages\\",
+      "outputPath": "\\\\Mac\\Home\\GoogleDriveSeptember\\VSWorkspace\\PainTracker\\PainTracker\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\roylee\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bowei\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

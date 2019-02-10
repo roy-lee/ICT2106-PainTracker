@@ -44,7 +44,9 @@ namespace PainTracker.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     MedName = table.Column<string>(nullable: false),
                     MedType = table.Column<string>(nullable: false),
-                    MedDescription = table.Column<string>(nullable: true)
+                    MedDescription = table.Column<string>(nullable: true),
+                    IssuedDate = table.Column<DateTime>(nullable: false),
+                    ExpiryDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -55,14 +57,14 @@ namespace PainTracker.Migrations
                 name: "PrescriptionModel",
                 columns: table => new
                 {
-                    PrescriptionID = table.Column<int>(nullable: false)
+                    InstructionID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Frequency = table.Column<int>(nullable: false),
                     Dosage = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PrescriptionModel", x => x.PrescriptionID);
+                    table.PrimaryKey("PK_PrescriptionModel", x => x.InstructionID);
                 });
         }
 

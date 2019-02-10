@@ -6,17 +6,20 @@ using System.Threading.Tasks;
 
 namespace PainTracker.Models
 {
-    public class Prescription : ILoggerModel
+    public class LoggerModel : ILoggerModel
     {
         [Key]
         public int PrescriptionID { get; set; }
 
         public int MedicineID { get; set; }
-        public int IntakeEventID { get; set; }        
+        public int IntakeEventID { get; set; }
+
+        public String Img { get; set; }
 
         public int Dosage { get; set; }
 
-        public byte[] Img { get; set; }
+        public DateTime DateTaken { get; set; }
+        public DateTime TimeTaken { get; set; }
 
         public void DeleteLog(int id)
         {
