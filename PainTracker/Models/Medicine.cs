@@ -17,10 +17,6 @@ namespace ExploreCalifornia.Models
         public String MedType { get; set; }
 
         public String MedDescription { get; set; }
-        public DateTime IssuedDate { get; set; }
-        public DateTime ExpiryDate { get; set; }
-        public int Frequency { get; set; }
-        public int Dosage { get; set; }
-        public String Image { get; set; }
+        
     }
 }
