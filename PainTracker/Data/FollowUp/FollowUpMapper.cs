@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using PainTracker.Models.FollowUp;
 using PainTracker.Models.FollowUpModels;
 using PainTracker.Models.FollowUpModels.States;
 
@@ -11,6 +12,7 @@ namespace PainTracker.Data.FollowUp
         {
             // custom mapping for IFollowUpState to int
             CreateMap<Models.FollowUpModels.FollowUp, FollowUpDTO>().ForMember(dest => dest.State, opt => opt.MapFrom(src => StateToInt(src.State)));
+            CreateMap<FollowUpDTO, Models.FollowUpModels.FollowUp>().ForMember(dest => dest.State, opt => opt.MapFrom(src => IntToState(src.State)));
         }
 
         // Translates state to an int to be stored in DB.
@@ -30,6 +32,26 @@ namespace PainTracker.Data.FollowUp
                     return 5;
                 default:
                     return -1;
+            }
+        }
+
+        // Translates int to state to 
+        private IFollowUpState IntToState(int state)
+        {
+            switch (state)
+            {
+                case 1:
+                    return new PendingQuestionState();
+                case 2:
+                    return new PendingAnswerState();
+                case 3:
+                    return new PendingAdviceState();
+                case 4:
+                    return new CancelledState();
+                case 5:
+                    return new CompletedState();
+                default:
+                    return new CompletedState();
             }
         }
     }

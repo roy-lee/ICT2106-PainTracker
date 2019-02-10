@@ -10,8 +10,6 @@ namespace PainTracker.Controllers
 {
     public class FollowUpController : Controller
     {
-        // Temporary List to simulate database.
-        static List<FollowUpDTO> FollowUpList = new List<FollowUpDTO>();
 
         private FollowUpDBMapper followUpDbMapper;
 
@@ -24,17 +22,8 @@ namespace PainTracker.Controllers
         // GET: FollowUp
         public ActionResult Index()
         {
-            for (int i = 1; i <= 10; i++)
-            {
-                FollowUpDTO insertFollowUps = new FollowUpDTO();
-                insertFollowUps.FollowUpId = 1;
-                FollowUpList.Add(insertFollowUps);
-            }
 
-            FollowUp fuvm = new FollowUp();
-            fuvm.State = new PendingAdviceState();
-            followUpDbMapper.Insert(fuvm);
-            followUpDbMapper.Save();
+            IEnumerable<FollowUp> FollowUpList = followUpDbMapper.SelectAll();
 
             return View(FollowUpList);
         }
@@ -42,7 +31,8 @@ namespace PainTracker.Controllers
         // GET: FollowUps/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            FollowUp resultFollowUp = followUpDbMapper.SelectById(id);
+            return View(resultFollowUp);
         }
 
         // GET: FollowUps/Create

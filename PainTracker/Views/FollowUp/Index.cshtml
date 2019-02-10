@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PainTracker.Data.FollowUp.FollowUpDTO>
+﻿@model IEnumerable<PainTracker.Models.FollowUpModels.FollowUp>
 
 @{
     ViewData["Title"] = "Index";
@@ -38,6 +38,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NotifyPatientFlag)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.FollowUpId">Details</a> |
             </td>
         </tr>
 }
