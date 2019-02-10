@@ -37,18 +37,18 @@ namespace ExploreCalifornia.Controllers
         {
             if (ModelState.IsValid)
             {
-                var med = new Medicine
-                {
-                    MedName = Request.Form["Name"],
-                    MedDescription = Request.Form["Description"],
-                    MedType = Request.Form["MedType"],
-                    IssuedDate = Convert.ToDateTime(Request.Form["Price"]),
-                    ExpiryDate = Convert.ToDateTime(Request.Form["Rating"]),
-                    //IncludesMeals = Convert.ToBoolean(Request.Form["IncludesMeals"])
-                };
+                //var med = new Medicine
+                //{
+                //    MedName = Request.Form["Name"],
+                //    MedDescription = Request.Form["Description"],
+                //    MedType = Request.Form["MedType"],
+                //    IssuedDate = Convert.ToDateTime(Request.Form["Price"]),
+                //    ExpiryDate = Convert.ToDateTime(Request.Form["Rating"]),
+                //    //IncludesMeals = Convert.ToBoolean(Request.Form["IncludesMeals"])
+                //};
                 
 
-                newMedicineGateway.Insert(med);
+                //newMedicineGateway.Insert(med);
                 return RedirectToAction(nameof(Index));
             }
             return RedirectToAction(nameof(Index));
@@ -79,17 +79,17 @@ namespace ExploreCalifornia.Controllers
         {
             if (ModelState.IsValid)
             {
-                Tour tour = new Tour
-                {
-                    Name = Request.Form["Name"],
-                    Description = Request.Form["Description"],
-                    Length = Convert.ToInt32(Request.Form["Length"]),
-                    Price = Convert.ToDecimal(Request.Form["Price"]),
-                    Rating = Request.Form["Rating"],
-                    //IncludesMeals = Convert.ToBoolean(Request.Form["IncludesMeals"])
-                };
+                //Tour tour = new Tour
+                //{
+                //    Name = Request.Form["Name"],
+                //    Description = Request.Form["Description"],
+                //    Length = Convert.ToInt32(Request.Form["Length"]),
+                //    Price = Convert.ToDecimal(Request.Form["Price"]),
+                //    Rating = Request.Form["Rating"],
+                //    //IncludesMeals = Convert.ToBoolesan(Request.Form["IncludesMeals"])
+                //};
 
-                newMedicineGateway.Insert(tour);
+                //newMedicineGateway.Insert(tour);
                 return RedirectToAction(nameof(Index));
             }
             return RedirectToAction(nameof(Index));

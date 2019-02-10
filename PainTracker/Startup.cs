@@ -36,8 +36,7 @@ namespace PainTracker
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<TourContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("TourContext")));
+            services.AddDbContext<MedicineIntakeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MedicineIntakeContext")));
 
             //services.AddDbContext<PainTrackerContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("PainTrackerContext")));
         }

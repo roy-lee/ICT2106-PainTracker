@@ -1,4 +1,4 @@
-﻿using ExploreCalifornia.Models;
+﻿using PainTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MedicineIntake.Data
 {
-    public class NewMedicineGateway : DataGateway<Medicine>
+    public class NewMedicineGateway : DataGateway<Medicine>, DataGateway<Prescription>
     {
     }
 }

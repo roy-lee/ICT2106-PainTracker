@@ -1,5 +1,5 @@
-﻿using ExploreCalifornia.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using PainTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

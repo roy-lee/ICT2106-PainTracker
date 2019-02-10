@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
+using PainTracker.Models;
 
-namespace ExploreCalifornia.Models
+namespace PainTracker.Models
 {
     public class MedicineIntakeContext : DbContext
     {
@@ -31,9 +32,10 @@ namespace ExploreCalifornia.Models
         {
         }
 
-        public DbSet<MedicineModel> MedicineModel { get; set; }
-        public DbSet<PrescriptionModel> PrescriptionModel { get; set; }
-        public DbSet<ImageModel> ImageModel { get; set; }
-        public DbSet<MedicineIntakeEventModel> MedicineIntakeEventModel { get; set; }
+        public DbSet<Medicine> MedicineModel { get; set; }
+        public DbSet<Prescription> PrescriptionModel { get; set; }
+        public DbSet<Image> ImageModel { get; set; }
+        public DbSet<Logger> Logger { get; set; }
+        //public DbSet<MedicineIntakeEvent> MedicineIntakeEventModel { get; set; }
     }
 }
