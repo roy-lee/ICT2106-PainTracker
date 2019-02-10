@@ -7,7 +7,7 @@ namespace PainTracker.Models.FollowUpModels
 {
     public class FollowUp
     {
-        [Display(Name = "ID.")]
+        [Display(Name = "Follow Up ID")]
         public int FollowUpId { get; set; }
         public IFollowUpState State { get; set; }
         public ICollection<FollowUpQuestion> QuestionId { get; set; }
