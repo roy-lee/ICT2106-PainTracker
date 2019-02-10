@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ExploreCalifornia.Models;
 using Microsoft.AspNetCore.Http;
 using MedicineIntake.Data;
+using PainTracker.Models;
 
 namespace ExploreCalifornia.Controllers
 {

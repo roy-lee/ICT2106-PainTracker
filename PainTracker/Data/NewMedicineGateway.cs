@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MedicineIntake.Data
 {
-    public class NewMedicineGateway : DataGateway<Medicine>, DataGateway<Prescription>
+    public class NewMedicineGateway : DataGateway<Medicine>
     {
     }
 }

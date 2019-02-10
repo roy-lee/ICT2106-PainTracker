@@ -36,9 +36,7 @@ namespace PainTracker
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<MedicineIntakeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MedicineIntakeContext")));
-
-            //services.AddDbContext<PainTrackerContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("PainTrackerContext")));
+            services.AddDbContext<MedicineIntakeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PainTrackerContext")));          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

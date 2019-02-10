@@ -19,16 +19,12 @@ namespace PainTracker.Models
             }
         }
 
-        public MedicineIntakeContext()
-        {
-        }
-
         public MedicineIntakeContext (DbContextOptions<MedicineIntakeContext> options)
             : base(options)
         {
         }
 
-        public MedicineIntakeContext(DbContextOptions options) : base(options)
+        public MedicineIntakeContext()
         {
         }
 
