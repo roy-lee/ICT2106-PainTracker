@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PainTracker.Data.FollowUp
 {
+    // Stub class
     public class PainDairyDTO
     {
         [Key]
