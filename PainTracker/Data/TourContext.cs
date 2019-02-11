@@ -24,5 +24,7 @@ namespace PainTracker.Models
         public DbSet<FollowUpDTO> FollowUpDTO { get; set; }
 
         public DbSet<PainTracker.Models.Tour> Tour { get; set; }
+
+        public DbSet<PainTracker.Data.FollowUp.PainDairyDTO> PainDairyDTO { get; set; }
     }
 }

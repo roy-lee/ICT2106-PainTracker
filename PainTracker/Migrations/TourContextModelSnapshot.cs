@@ -27,17 +27,28 @@ namespace PainTracker.Migrations
 
                     b.Property<DateTime>("DateGenerated");
 
-                    b.Property<int?>("FollowUpQuestionQuestionId");
-
                     b.Property<bool>("NotifyPatientFlag");
+
+                    b.Property<int?>("PainDairyID");
 
                     b.Property<int>("State");
 
                     b.HasKey("FollowUpId");
 
-                    b.HasIndex("FollowUpQuestionQuestionId");
+                    b.HasIndex("PainDairyID");
 
                     b.ToTable("FollowUpDTO");
+                });
+
+            modelBuilder.Entity("PainTracker.Data.FollowUp.PainDairyDTO", b =>
+                {
+                    b.Property<int>("PainDairyId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.HasKey("PainDairyId");
+
+                    b.ToTable("PainDairyDTO");
                 });
 
             modelBuilder.Entity("PainTracker.Models.FollowUpModels.FollowUpQuestion", b =>
@@ -46,15 +57,13 @@ namespace PainTracker.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("FollowUpDTOFollowUpId");
-
-                    b.Property<int>("FollowUpRefId");
+                    b.Property<int?>("FollowUpId");
 
                     b.Property<string>("Question");
 
                     b.HasKey("QuestionId");
 
-                    b.HasIndex("FollowUpDTOFollowUpId");
+                    b.HasIndex("FollowUpId");
 
                     b.ToTable("FollowUpQuestion");
                 });
@@ -85,16 +94,16 @@ namespace PainTracker.Migrations
 
             modelBuilder.Entity("PainTracker.Data.FollowUp.FollowUpDTO", b =>
                 {
-                    b.HasOne("PainTracker.Models.FollowUpModels.FollowUpQuestion", "FollowUpQuestion")
-                        .WithMany()
-                        .HasForeignKey("FollowUpQuestionQuestionId");
+                    b.HasOne("PainTracker.Data.FollowUp.PainDairyDTO", "PainDairyDTO")
+                        .WithMany("FollowUpDTO")
+                        .HasForeignKey("PainDairyID");
                 });
 
             modelBuilder.Entity("PainTracker.Models.FollowUpModels.FollowUpQuestion", b =>
                 {
-                    b.HasOne("PainTracker.Data.FollowUp.FollowUpDTO")
+                    b.HasOne("PainTracker.Data.FollowUp.FollowUpDTO", "FollowUpDto")
                         .WithMany("QuestionId")
-                        .HasForeignKey("FollowUpDTOFollowUpId");
+                        .HasForeignKey("FollowUpId");
                 });
 #pragma warning restore 612, 618
         }

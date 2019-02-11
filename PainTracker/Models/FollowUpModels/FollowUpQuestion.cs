@@ -10,8 +10,7 @@ namespace PainTracker.Models.FollowUpModels
         public int QuestionId { get; set; }
         public string Question { get; set; }
 
-        public int FollowUpRefId { get; set; }
-        [ForeignKey("FollowUpRefId")]
-        public FollowUpDTO FollowUpDto;
+        public int? FollowUpId { get; set; }
+        public FollowUpDTO FollowUpDto { get; set;}
     }
 }
