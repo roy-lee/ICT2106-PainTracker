@@ -13,9 +13,10 @@ namespace PainTracker.Controllers
 
         private FollowUpDBMapper followUpDbMapper;
 
-        public FollowUpController(IMapper mapper)
+        // controller should receive the mapper as parameter, pass the mapper as a reference instead of new()
+        public FollowUpController(FollowUpDBMapper mapper)
         {
-            followUpDbMapper = new FollowUpDBMapper(mapper);
+            followUpDbMapper = mapper;
             System.Diagnostics.Debug.WriteLine("FollowUpController created");
         }
 

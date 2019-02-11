@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using PainTracker.Data.FollowUp;
 using PainTracker.Models;
 
 namespace PainTracker
@@ -39,7 +40,7 @@ namespace PainTracker
 
             services.AddDbContext<TourContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("TourContext")));
-
+            services.AddScoped<FollowUpDBMapper>();
             //services.AddDbContext<PainTrackerContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("PainTrackerContext")));
         }
 

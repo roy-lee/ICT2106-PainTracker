@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using PainTracker.Models;
@@ -25,7 +23,6 @@ namespace PainTracker.Data.FollowUp
             foreach (FollowUpDTO fudto in resultEnumerable)
             {
                 returnEnumerable.Add(_mapper.Map<FollowUpDTO,Models.FollowUpModels.FollowUp>(fudto));
-                System.Diagnostics.Debug.WriteLine("returnEnumerable size = " + returnEnumerable.Count());
             }
             return returnEnumerable;
         }

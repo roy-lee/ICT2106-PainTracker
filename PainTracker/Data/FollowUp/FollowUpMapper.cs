@@ -1,13 +1,11 @@
 ﻿using AutoMapper;
 using PainTracker.Models.FollowUp;
-using PainTracker.Models.FollowUpModels;
 using PainTracker.Models.FollowUpModels.States;
 
 namespace PainTracker.Data.FollowUp
 {
     public class FollowUpMapper : Profile
     {
-
         public FollowUpMapper()
         {
             // custom mapping for IFollowUpState to int
