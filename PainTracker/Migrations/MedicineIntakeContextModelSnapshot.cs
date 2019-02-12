@@ -20,7 +20,6 @@ namespace PainTracker.Migrations
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("PainTracker.Models.Image", b =>
-<<<<<<< HEAD
                 {
                     b.Property<int>("KeyID")
                         .ValueGeneratedOnAdd()
@@ -31,15 +30,6 @@ namespace PainTracker.Migrations
                     b.Property<byte[]>("MedImage");
 
                     b.HasKey("KeyID");
-=======
-                {
-                    b.Property<int>("ImgID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Img");
-
-                    b.HasKey("ImgID");
 
                     b.ToTable("ImageModel");
                 });
@@ -53,11 +43,10 @@ namespace PainTracker.Migrations
                     b.Property<int>("Dosage");
 
                     b.Property<int>("Frequency");
->>>>>>> 5d44be588376843a8b736ba09f776977017c710a
 
                     b.HasKey("InstructionID");
 
-                    b.ToTable("PrescriptionModel");
+                    b.ToTable("Prescription");
                 });
 
             modelBuilder.Entity("PainTracker.Models.Logger", b =>
@@ -78,28 +67,6 @@ namespace PainTracker.Migrations
                 });
 
             modelBuilder.Entity("PainTracker.Models.Medicine", b =>
-<<<<<<< HEAD
-                {
-                    b.Property<int>("MedID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("MedDescription");
-
-                    b.Property<string>("MedName")
-                        .IsRequired();
-
-                    b.Property<string>("MedType")
-                        .IsRequired();
-
-                    b.HasKey("MedID");
-
-                    b.ToTable("Medicine");
-                });
-
-            modelBuilder.Entity("PainTracker.Models.Prescription", b =>
-=======
->>>>>>> 5d44be588376843a8b736ba09f776977017c710a
                 {
                     b.Property<int>("MedID")
                         .ValueGeneratedOnAdd()
@@ -119,7 +86,26 @@ namespace PainTracker.Migrations
 
                     b.HasKey("MedID");
 
-                    b.ToTable("MedicineModel");
+                    b.ToTable("Medicine");
+                });
+
+            modelBuilder.Entity("PainTracker.Models.Prescription", b =>
+                {
+                    b.Property<int>("PrescriptionID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Dosage");
+
+                    b.Property<byte[]>("Img");
+
+                    b.Property<int>("IntakeEventID");
+
+                    b.Property<int>("MedicineID");
+
+                    b.HasKey("PrescriptionID");
+
+                    b.ToTable("PrescriptionModel");
                 });
 #pragma warning restore 612, 618
         }

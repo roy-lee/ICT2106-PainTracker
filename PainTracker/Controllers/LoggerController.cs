@@ -7,30 +7,27 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PainTracker.Controllers
 {
-    public class NewMedicineController : Controller
+    public class LoggerController : Controller
     {
-        private List<Medicine> medicine;
-        private NewMedicineGateway<Medicine> newMedicineGateway;
-
-        // GET: NewMedicine
+        // GET: Logger
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: NewMedicine/Details/5
+        // GET: Logger/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: NewMedicine/Create
+        // GET: Logger/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: NewMedicine/Create
+        // POST: Logger/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -47,13 +44,13 @@ namespace PainTracker.Controllers
             }
         }
 
-        // GET: NewMedicine/Edit/5
+        // GET: Logger/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: NewMedicine/Edit/5
+        // POST: Logger/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -70,13 +67,13 @@ namespace PainTracker.Controllers
             }
         }
 
-        // GET: NewMedicine/Delete/5
+        // GET: Logger/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: NewMedicine/Delete/5
+        // POST: Logger/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
@@ -91,10 +88,6 @@ namespace PainTracker.Controllers
             {
                 return View();
             }
-        }
-        
-        public ActionResult Upload(){
-            //TODO implement Upload function
         }
     }
 }

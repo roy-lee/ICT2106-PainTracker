@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PainTracker.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class IC : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,13 +12,14 @@ namespace PainTracker.Migrations
                 name: "ImageModel",
                 columns: table => new
                 {
-                    ImgID = table.Column<int>(nullable: false)
+                    KeyID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Img = table.Column<string>(nullable: true)
+                    ImgID = table.Column<int>(nullable: false),
+                    MedImage = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ImageModel", x => x.ImgID);
+                    table.PrimaryKey("PK_ImageModel", x => x.KeyID);
                 });
 
             migrationBuilder.CreateTable(
@@ -37,7 +38,7 @@ namespace PainTracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MedicineModel",
+                name: "Medicine",
                 columns: table => new
                 {
                     MedID = table.Column<int>(nullable: false)
@@ -50,11 +51,11 @@ namespace PainTracker.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MedicineModel", x => x.MedID);
+                    table.PrimaryKey("PK_Medicine", x => x.MedID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PrescriptionModel",
+                name: "Prescription",
                 columns: table => new
                 {
                     InstructionID = table.Column<int>(nullable: false)
@@ -64,7 +65,23 @@ namespace PainTracker.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PrescriptionModel", x => x.InstructionID);
+                    table.PrimaryKey("PK_Prescription", x => x.InstructionID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PrescriptionModel",
+                columns: table => new
+                {
+                    PrescriptionID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    MedicineID = table.Column<int>(nullable: false),
+                    IntakeEventID = table.Column<int>(nullable: false),
+                    Dosage = table.Column<int>(nullable: false),
+                    Img = table.Column<byte[]>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PrescriptionModel", x => x.PrescriptionID);
                 });
         }
 
@@ -77,7 +94,10 @@ namespace PainTracker.Migrations
                 name: "Logger");
 
             migrationBuilder.DropTable(
-                name: "MedicineModel");
+                name: "Medicine");
+
+            migrationBuilder.DropTable(
+                name: "Prescription");
 
             migrationBuilder.DropTable(
                 name: "PrescriptionModel");

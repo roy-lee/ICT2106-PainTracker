@@ -10,8 +10,8 @@ using PainTracker.Models;
 namespace PainTracker.Migrations
 {
     [DbContext(typeof(MedicineIntakeContext))]
-    [Migration("20190211045522_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20190212102237_IC")]
+    partial class IC
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,21 @@ namespace PainTracker.Migrations
                     b.HasKey("KeyID");
 
                     b.ToTable("ImageModel");
+                });
+
+            modelBuilder.Entity("PainTracker.Models.Instruction", b =>
+                {
+                    b.Property<int>("InstructionID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Dosage");
+
+                    b.Property<int>("Frequency");
+
+                    b.HasKey("InstructionID");
+
+                    b.ToTable("Prescription");
                 });
 
             modelBuilder.Entity("PainTracker.Models.Logger", b =>
@@ -59,6 +74,10 @@ namespace PainTracker.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("ExpiryDate");
+
+                    b.Property<DateTime>("IssuedDate");
+
                     b.Property<string>("MedDescription");
 
                     b.Property<string>("MedName")
@@ -80,7 +99,11 @@ namespace PainTracker.Migrations
 
                     b.Property<int>("Dosage");
 
-                    b.Property<int>("Frequency");
+                    b.Property<byte[]>("Img");
+
+                    b.Property<int>("IntakeEventID");
+
+                    b.Property<int>("MedicineID");
 
                     b.HasKey("PrescriptionID");
 
