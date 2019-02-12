@@ -1,4 +1,4 @@
-﻿@model PainTracker.Data.FollowUp.PainDairyDTO
+﻿@model PainTracker.Data.FollowUp.PainDairyStub
 
 @{
     ViewData["Title"] = "Details";
@@ -174,9 +174,13 @@
                             <dt class="col-sm-2">
                                 Follow Up Id:
                             </dt>
-                            <dd class="col-sm-10">
-                                State: @Html.DisplayFor(test => item.FollowUpId)
+                            <dd class="col-sm-8">
+                                # @Html.DisplayFor(test => item.FollowUpId)
                             </dd>
+                            <dd class="col-sm-2">
+                                <a href="@Url.Action("Details", "FollowUp", new { id = item.FollowUpId, })" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Details</span></a>
+                            </dd>
+    
                         }
                     </dl>
                 </div>

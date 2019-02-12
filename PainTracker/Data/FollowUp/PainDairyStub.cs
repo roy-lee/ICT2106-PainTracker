@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PainTracker.Data.FollowUp
 {
-    // Stub class
-    public class PainDairyDTO
+    // Stub class for testing FollowUp
+    public class PainDairyStub
     {
         [Key]
         public int PainDairyId { get; set; }

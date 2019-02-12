@@ -10,11 +10,12 @@ namespace PainTracker.Models.FollowUpModels
         [Display(Name = "Follow Up ID")]
         public int FollowUpId { get; set; }
         public IFollowUpState State { get; set; }
-        public ICollection<FollowUpQuestion> QuestionId { get; set; }
+        public List<FollowUpQuestion> QuestionId { get; set; }
         public FollowUpQuestion FollowUpQuestion { get; set; }
         [Display(Name = "Date Created")]
         public DateTime DateGenerated { get; set; }
         [Display(Name = "Notified Patient?")]
         public bool NotifyPatientFlag { get; set; }
+        public int? PainDairyID { get; set; }
     }
 }

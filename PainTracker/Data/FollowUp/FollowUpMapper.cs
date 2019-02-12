@@ -4,13 +4,18 @@ using PainTracker.Models.FollowUpModels.States;
 
 namespace PainTracker.Data.FollowUp
 {
+    // Actual class that handles the bidirectional mapping of FollowUp <-> FollowUpDTO
     public class FollowUpMapper : Profile
     {
         public FollowUpMapper()
         {
-            // custom mapping for IFollowUpState to int
-            CreateMap<Models.FollowUpModels.FollowUp, FollowUpDTO>().ForMember(dest => dest.State, opt => opt.MapFrom(src => StateToInt(src.State)));
-            CreateMap<FollowUpDTO, Models.FollowUpModels.FollowUp>().ForMember(dest => dest.State, opt => opt.MapFrom(src => IntToState(src.State)));
+            // Custom Mapping for FollowUp -> FollowUpDTO, IFollowUpState to int FollowUp
+            CreateMap<Models.FollowUpModels.FollowUp, FollowUpDTO>()
+                .ForMember(dest => dest.State, opt => opt.MapFrom(src => StateToInt(src.State)));
+
+            // Custom Mapping for FollowUpDTO -> FollowUp, int FollowUp to IFollowUpState
+            CreateMap<FollowUpDTO, Models.FollowUpModels.FollowUp>()
+                .ForMember(dest => dest.State, opt => opt.MapFrom(src => IntToState(src.State)));
         }
 
         // Translates state to an int to be stored in DB.

@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PainTracker.Data.FollowUp;
 using PainTracker.Models.FollowUpModels;
-using PainTracker.Models.FollowUpModels.States;
 
 namespace PainTracker.Controllers
 {
@@ -33,6 +31,7 @@ namespace PainTracker.Controllers
         public ActionResult Details(int id)
         {
             FollowUp resultFollowUp = followUpDbMapper.SelectById(id);
+//            System.Diagnostics.Debug.WriteLine("FollowUpController.Details() - resultfollowUp.QuestionId.Count = " + resultFollowUp.QuestionId.Count);
             return View(resultFollowUp);
         }
 

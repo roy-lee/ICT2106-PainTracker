@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using PainTracker.Data.FollowUp;
-using PainTracker.Models.FollowUpModels;
 
 namespace PainTracker.Models
 {
@@ -25,6 +20,6 @@ namespace PainTracker.Models
 
         public DbSet<PainTracker.Models.Tour> Tour { get; set; }
 
-        public DbSet<PainTracker.Data.FollowUp.PainDairyDTO> PainDairyDTO { get; set; }
+        public DbSet<PainDairyStub> PainDairyStub { get; set; }
     }
 }

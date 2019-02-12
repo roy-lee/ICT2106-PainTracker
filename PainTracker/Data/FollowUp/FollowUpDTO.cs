@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using PainTracker.Models.FollowUpModels;
 
-// FollowUp Model 
+// FollowUp DTO, maps to DB 
 namespace PainTracker.Data.FollowUp
 {
     public class FollowUpDTO
@@ -17,11 +17,11 @@ namespace PainTracker.Data.FollowUp
         [Display(Name = "Notified Patient?")]
         public bool NotifyPatientFlag { get; set; }
 
-        // EF Pain Dairy FK stored in FollowUpDTO table
+        // EF Core: Pain Dairy FK stored in FollowUpDTO table
         public int? PainDairyID { get; set; }
-        public PainDairyDTO PainDairyDTO { get; set; }
+        public PainDairyStub PainDairyDTO { get; set; }
 
-        // EF Pain Dairy FK stored in FollowUpDTO table
+        // EF Core: List of Questions Tagged to the Follow Up
         public List<FollowUpQuestion> QuestionId { get; set; }
 
     }
