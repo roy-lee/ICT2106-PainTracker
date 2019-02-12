@@ -1,0 +1,207 @@
+﻿@model IEnumerable<ExploreCalifornia.Models.PainEntry>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<script src="https://www.flotcharts.org/flot/source/jquery.js" type="text/javascript"></script>
+<!-- BEGIN: Subheader -->
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">Analytics</h3>
+            <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+                <li class="m-nav__item m-nav__item--home">                 
+                    <a href="#" class="m-nav__link m-nav__link--icon">
+                        <i class="m-nav__link-icon la la-home"></i>
+                    </a>
+                </li>
+                <li class="m-nav__separator">-</li>
+                <li class="m-nav__item">
+                    <a href="" class="m-nav__link">
+                        <span class="m-nav__link-text">Analytics</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <span class="m-subheader__daterange" id="m_dashboard_daterangepicker">
+                <span class="m-subheader__daterange-label">
+                    <span class="m-subheader__daterange-title"></span>
+                    <span class="m-subheader__daterange-date m--font-brand"></span>
+                </span>
+                <a href="#" class="btn btn-sm btn-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill">
+                    <i class="la la-angle-down"></i>
+                </a>
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- END: Subheader -->
+
+<div class="m-content">
+    <!-------------------------begin::Graph row------------------------>
+    <div class="row">
+        <div class="col-lg-12">
+            <!--begin::Portlet-->
+            <div class="m-portlet m-portlet--tab">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <span class="m-portlet__head-icon m--hide">
+                                <i class="la la-gear"></i>
+                            </span>
+                            <h3 class="m-portlet__head-text">
+                                <div class="input-group">
+                                    <input class="form-control py-2 border-right-0 border" type="search" placeholder="Search patient" id="searchInput">
+                                    <span class="input-group-append">
+                                        <div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div>
+                                    </span>
+                                </div>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-portlet__body">
+                    <div id="main_graph" style="height: 300px;"></div>
+                </div>
+            </div>
+            <!--end::Portlet-->
+        </div>
+    </div>
+    <!-------------------------end::Graph row------------------------>
+    <!-------------------------begin::Buttons graph row------------------------>
+    <div class="row justify-content-center">
+        <div class="col-md-2"></div>
+        <div class="col-lg-2">
+            <button type="button" class="btn m-btn--square btn-outline-info">Pain Intensity</button>
+        </div>
+        <div class="col-lg-2">
+            <button type="button" class="btn m-btn--square btn-outline-info" onclick="graphInterference()">Pain Interference</button>
+        </div>
+        <div class="col-lg-2">
+            <button type="button" class="btn m-btn--square btn-outline-info">Medicine Intake</button>
+        </div>
+        <div class="col-lg-2">
+            <button type="button" class="btn m-btn--square btn-outline-info">Sleeping Patterns</button>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <!-------------------------end::Graph row------------------------>
+    <br /></br/>
+    <!-------------------------begin::Patient content row------------------------>
+    
+
+    <!-------------------------end::Patient content row------------------------>
+
+</div>
+
+<!--begin::Global Theme Bundle -->
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/flot/0.7/jquery.flot.min.js"></script>
+
+<script type="text/javascript">
+    var myArray = [];
+    function pad(s) { return (s < 10) ? '0' + s : s; }//Function to convert yyyy/mm/dd
+    @foreach (var d in Model)
+    {//
+
+        @:var d = new Date("@d.date");
+
+        @:var dd = pad(d.getDate());
+        @:var mm =pad(d.getMonth() + 1);
+        @:var yyyy = d.getFullYear();
+      
+        @:myArray.push([gd(yyyy,dd,mm), "@d.painIntensity"]);
+
+    }
+
+
+    
+
+
+    var dataset = [
+        {
+            label: "Pain Intensity",
+            data: myArray,
+            color: "#FFFFFF",
+            points: { fillColor: "#FFFFFF", show: true },
+            lines: { show: true }
+        }
+
+
+    ];
+
+    var options = {
+        xaxis: {
+            mode: "time",
+            timeformat: "%m/%d",
+            tickSize: [1, "day"],
+            color: "black",
+
+            axisLabel: "Date",
+        },
+        series: {
+            lines: { show: true },
+            points: {
+                radius: 1,
+                show: true
+            }
+
+        }
+    };
+
+
+    $.plot($("#main_graph"), dataset, options);
+
+    function graphInterference() {
+    var myInterference = [];
+    @foreach (var d in Model)
+    {
+        @:var d = new Date("@d.date");
+        @:var dd = pad(d.getDate());
+        @:var mm =pad(d.getMonth() + 1);
+        @:var yyyy = d.getFullYear();
+       
+      @:myInterference.push([gd(yyyy, dd, mm), "@d.Interference.severity"]);
+
+    }
+        var dataset = [
+            {
+                label: "Pain Interference",
+                data: myInterference,
+                color: "#FFFFFF",
+                points: { fillColor: "#FFFFFF", show: true },
+                lines: { show: true }
+            }
+
+
+        ];
+
+        var options = {
+            xaxis: {
+                mode: "time",
+                timeformat: "%m/%d",
+                tickSize: [1, "day"],
+                color: "black",
+
+                axisLabel: "Date",
+            },
+            series: {
+                lines: { show: true },
+                points: {
+                    radius: 1,
+                    show: true
+                }
+
+            }
+        };
+        //Hold first for now
+        //$.plot($("#main_graph"), dataset, options);
+    }
+
+    function gd(year, month, day) {
+        return new Date(year, month - 1, day).getTime();
+    }
+
+</script>

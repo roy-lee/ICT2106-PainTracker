@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using PainTracker.Models;
+using ExploreCalifornia.Models;
 
-namespace PainTracker
+namespace ExploreCalifornia
 {
     public class Startup
     {
@@ -36,10 +36,8 @@ namespace PainTracker
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<TourContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("TourContext")));
-
-            //services.AddDbContext<PainTrackerContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("PainTrackerContext")));
+            services.AddDbContext<ExploreCaliforniaContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("ExploreCaliforniaContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,7 +62,7 @@ namespace PainTracker
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Patient}/{action=Index}/{id?}");
             });
         }
     }

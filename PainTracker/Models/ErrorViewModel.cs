@@ -1,6 +1,6 @@
 using System;
 
-namespace PainTracker.Models
+namespace ExploreCalifornia.Models
 {
     public class ErrorViewModel
     {

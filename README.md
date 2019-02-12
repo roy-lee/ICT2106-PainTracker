@@ -35,6 +35,3 @@ Checkout to your respective branch
 ```
 git checkout <your_module_name>
 ```
-
-**Remember to commit your work with message before pushing!
-Thank you!**

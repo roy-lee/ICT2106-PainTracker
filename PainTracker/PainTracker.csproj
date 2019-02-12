@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Analytics\**" />
+    <Content Remove="Analytics\**" />
+    <EmbeddedResource Remove="Analytics\**" />
+    <None Remove="Analytics\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\lib\assets\app\js\dashboard.js" />
     <None Include="wwwroot\lib\assets\app\js\layout-builder.js" />
     <None Include="wwwroot\lib\assets\app\js\my-script.js" />
