@@ -10,8 +10,8 @@ using PainTracker.Models;
 namespace PainTracker.Migrations
 {
     [DbContext(typeof(MedicineIntakeContext))]
-    [Migration("20190212102237_IC")]
-    partial class IC
+    [Migration("20190212122010_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,11 +57,13 @@ namespace PainTracker.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Dosage");
+                    b.Property<int>("DosageTaken");
 
                     b.Property<DateTime>("ExpiryDate");
 
                     b.Property<DateTime>("IssuedDate");
+
+                    b.Property<int>("MedID");
 
                     b.HasKey("LogID");
 
@@ -73,10 +75,6 @@ namespace PainTracker.Migrations
                     b.Property<int>("MedID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("ExpiryDate");
-
-                    b.Property<DateTime>("IssuedDate");
 
                     b.Property<string>("MedDescription");
 

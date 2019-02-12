@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 namespace PainTracker.Models
 {
     public class Image
-    {
+    {       
         [Key]
         public int KeyID { get; set; }
 
-        
+        [ForeignKey("Medicine")]
         public int ImgID { get; set; }
-               
+
         public byte[] MedImage { get; set; }
+
+        
     }
 }

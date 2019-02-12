@@ -55,11 +55,13 @@ namespace PainTracker.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Dosage");
+                    b.Property<int>("DosageTaken");
 
                     b.Property<DateTime>("ExpiryDate");
 
                     b.Property<DateTime>("IssuedDate");
+
+                    b.Property<int>("MedID");
 
                     b.HasKey("LogID");
 
@@ -71,10 +73,6 @@ namespace PainTracker.Migrations
                     b.Property<int>("MedID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("ExpiryDate");
-
-                    b.Property<DateTime>("IssuedDate");
 
                     b.Property<string>("MedDescription");
 

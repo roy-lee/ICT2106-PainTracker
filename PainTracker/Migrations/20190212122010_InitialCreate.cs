@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PainTracker.Migrations
 {
-    public partial class IC : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,9 +28,10 @@ namespace PainTracker.Migrations
                 {
                     LogID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    MedID = table.Column<int>(nullable: false),
                     IssuedDate = table.Column<DateTime>(nullable: false),
                     ExpiryDate = table.Column<DateTime>(nullable: false),
-                    Dosage = table.Column<int>(nullable: false)
+                    DosageTaken = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,9 +46,7 @@ namespace PainTracker.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     MedName = table.Column<string>(nullable: false),
                     MedType = table.Column<string>(nullable: false),
-                    MedDescription = table.Column<string>(nullable: true),
-                    IssuedDate = table.Column<DateTime>(nullable: false),
-                    ExpiryDate = table.Column<DateTime>(nullable: false)
+                    MedDescription = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

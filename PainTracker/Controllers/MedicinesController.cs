@@ -19,7 +19,7 @@ namespace PainTracker.Controllers
     {
         private DataGateway<Medicine> medicineGateway = new DataGateway<Medicine>();
         private DataGateway<Image> imageGateway = new DataGateway<Image>();
-
+        Byte[] medImage;
         // GET: Medicines
         public ActionResult Index()
         {
@@ -57,6 +57,7 @@ namespace PainTracker.Controllers
                 };
 
                 imageGateway.Insert(image);
+                medImage = image.MedImage;
                 return RedirectToAction(nameof(Index));
             }
             return RedirectToAction(nameof(Index));
@@ -120,5 +121,13 @@ namespace PainTracker.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // GET: Medicines/Event/5
+        public ActionResult Event(Byte[] img)
+        {
+            
+            return RedirectToAction("Index","Logger",img);           
+        }
     }
+
+   
 }

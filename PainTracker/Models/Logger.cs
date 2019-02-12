@@ -10,9 +10,9 @@ namespace PainTracker.Models
     {
         [Key]
         public int LogID { get; set; }
-
+        public int MedID { get; set; }
         public DateTime IssuedDate { get; set; }
         public DateTime ExpiryDate { get; set; }
-        public int Dosage { get; set; }
+        public int DosageTaken { get; set; }
     }
 }

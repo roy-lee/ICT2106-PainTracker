@@ -4,15 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PainTracker.Data;
+using PainTracker.Models;
 
 namespace PainTracker.Controllers
 {
     public class LoggerController : Controller
     {
+        private DataGateway<Image> imageGateway = new DataGateway<Image>();
         // GET: Logger
-        public ActionResult Index()
-        {
-            return View();
+        public ActionResult Index(Byte[] img)
+        {         
+            
+            return View(img);
         }
 
         // GET: Logger/Details/5
