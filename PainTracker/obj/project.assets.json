@@ -12947,23 +12947,39 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Jasper\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\bowei\\.nuget\\packages\\": {},
+>>>>>>> 5d44be588376843a8b736ba09f776977017c710a
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "D:\\Users\\Jasper\\Documents\\GitHub\\ICT2106-PainTracker\\PainTracker\\PainTracker.csproj",
       "projectName": "PainTracker",
       "projectPath": "D:\\Users\\Jasper\\Documents\\GitHub\\ICT2106-PainTracker\\PainTracker\\PainTracker.csproj",
       "packagesPath": "C:\\Users\\Jasper\\.nuget\\packages\\",
       "outputPath": "D:\\Users\\Jasper\\Documents\\GitHub\\ICT2106-PainTracker\\PainTracker\\obj\\",
+=======
+      "projectUniqueName": "\\\\Mac\\Home\\GoogleDriveSeptember\\VSWorkspace\\PainTracker\\PainTracker\\PainTracker.csproj",
+      "projectName": "PainTracker",
+      "projectPath": "\\\\Mac\\Home\\GoogleDriveSeptember\\VSWorkspace\\PainTracker\\PainTracker\\PainTracker.csproj",
+      "packagesPath": "C:\\Users\\bowei\\.nuget\\packages\\",
+      "outputPath": "\\\\Mac\\Home\\GoogleDriveSeptember\\VSWorkspace\\PainTracker\\PainTracker\\obj\\",
+>>>>>>> 5d44be588376843a8b736ba09f776977017c710a
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\Jasper\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\bowei\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 5d44be588376843a8b736ba09f776977017c710a
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

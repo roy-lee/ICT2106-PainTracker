@@ -20,19 +20,24 @@ namespace PainTracker.Models
             }
         }
 
-        public MedicineIntakeContext()
-        {
-        }
-
         public MedicineIntakeContext (DbContextOptions<MedicineIntakeContext> options)
             : base(options)
         {
         }
 
+<<<<<<< HEAD
        
 
         public DbSet<Medicine> Medicine { get; set; }
         public DbSet<Prescription> PrescriptionModel { get; set; }
+=======
+        public MedicineIntakeContext()
+        {
+        }
+
+        public DbSet<Medicine> MedicineModel { get; set; }
+        public DbSet<Instruction> PrescriptionModel { get; set; }
+>>>>>>> 5d44be588376843a8b736ba09f776977017c710a
         public DbSet<Image> ImageModel { get; set; }
         public DbSet<Logger> Logger { get; set; }
         //public DbSet<MedicineIntakeEvent> MedicineIntakeEventModel { get; set; }

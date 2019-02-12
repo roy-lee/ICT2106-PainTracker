@@ -6,9 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+<<<<<<< HEAD
 using PainTracker.Data;
 using PainTracker.Models;
 using System.Text;
+=======
+using MedicineIntake.Data;
+using PainTracker.Models;
+>>>>>>> 5d44be588376843a8b736ba09f776977017c710a
 
 namespace PainTracker.Controllers
 {

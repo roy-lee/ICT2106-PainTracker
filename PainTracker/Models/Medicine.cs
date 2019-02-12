@@ -12,11 +12,11 @@ namespace PainTracker.Models
 
         [Required]
         public String MedName { get; set; }
-
         [Required]
         public String MedType { get; set; }
-
         public String MedDescription { get; set; }
-        
+        public DateTime IssuedDate { get; set; }
+        public DateTime ExpiryDate { get; set; }
+
     }
 }

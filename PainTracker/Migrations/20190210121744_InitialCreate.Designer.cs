@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PainTracker.Models;
 
 namespace PainTracker.Migrations
 {
     [DbContext(typeof(MedicineIntakeContext))]
-    partial class MedicineIntakeContextModelSnapshot : ModelSnapshot
+    [Migration("20190210121744_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,18 +22,6 @@ namespace PainTracker.Migrations
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("PainTracker.Models.Image", b =>
-<<<<<<< HEAD
-                {
-                    b.Property<int>("KeyID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ImgID");
-
-                    b.Property<byte[]>("MedImage");
-
-                    b.HasKey("KeyID");
-=======
                 {
                     b.Property<int>("ImgID")
                         .ValueGeneratedOnAdd()
@@ -53,7 +43,6 @@ namespace PainTracker.Migrations
                     b.Property<int>("Dosage");
 
                     b.Property<int>("Frequency");
->>>>>>> 5d44be588376843a8b736ba09f776977017c710a
 
                     b.HasKey("InstructionID");
 
@@ -78,28 +67,6 @@ namespace PainTracker.Migrations
                 });
 
             modelBuilder.Entity("PainTracker.Models.Medicine", b =>
-<<<<<<< HEAD
-                {
-                    b.Property<int>("MedID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("MedDescription");
-
-                    b.Property<string>("MedName")
-                        .IsRequired();
-
-                    b.Property<string>("MedType")
-                        .IsRequired();
-
-                    b.HasKey("MedID");
-
-                    b.ToTable("Medicine");
-                });
-
-            modelBuilder.Entity("PainTracker.Models.Prescription", b =>
-=======
->>>>>>> 5d44be588376843a8b736ba09f776977017c710a
                 {
                     b.Property<int>("MedID")
                         .ValueGeneratedOnAdd()
