@@ -1,0 +1,49 @@
+﻿@model PainTracker.Models.ModelViewBag
+
+
+<h4>Medicine</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+            <label asp-for="MedID" class="control-label"></label>
+            <input asp-for="MedID" class="form-control" />
+            <span asp-validation-for="MedName" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <label asp-for="medicine.MedName" class="control-label">Medicine Name</label>
+                <input asp-for="medicine.MedName" class="form-control" />
+                <span asp-validation-for="medicine.MedName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="medicine.MedType" class="control-label">Medicine Type</label>
+                <input asp-for="medicine.MedType" class="form-control" />
+                <span asp-validation-for="medicine.MedType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="medicine.MedDescription" class="control-label">Medicine Description</label>
+                <input asp-for="medicine.MedDescription" class="form-control" />
+                <span asp-validation-for="medicine.MedDescription" class="text-danger"></span>
+            </div>
+                       
+            <div class="form-group">
+                <label asp-for="img.MedImage" class="control-label">Image File</label>
+                <input type="file" asp-for="img.MedImage" />
+                <span asp-validation-for="img.MedImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

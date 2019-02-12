@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MedicineIntake.Data
+namespace PainTracker.Data
 {
-    public class NewMedicineGateway : DataGateway<Medicine>, DataGateway<Prescription>
+    public class NewMedicineGateway : DataGateway<Medicine>
     {
     }
 }

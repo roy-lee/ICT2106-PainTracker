@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PainTracker.Models.Medicine>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                No.
+            </th>*@
+            <th>
+                Medicine Name
+            </th>
+            <th>
+                Medicine Type
+            </th>
+            <th>
+                Medicine Description
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.MedID)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.MedName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.MedID }) |
+                @Html.ActionLink("Event", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.MedID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

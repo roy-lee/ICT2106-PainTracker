@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PainTracker.Models;
 
-namespace MedicineIntake.Data
+namespace PainTracker.Data
 {
     interface IDataGateway<T>
     {
@@ -13,6 +14,8 @@ namespace MedicineIntake.Data
         T SelectById(int? id);
 
         void Insert(T obj);
+
+        T FindObjectID(T obj);
 
         void Update(T obj);
 

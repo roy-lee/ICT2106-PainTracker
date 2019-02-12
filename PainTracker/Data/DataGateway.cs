@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MedicineIntake.Data
+namespace PainTracker.Data
 {
     public class DataGateway<T> : IDataGateway<T> where T:class
     {
@@ -42,8 +42,13 @@ namespace MedicineIntake.Data
             db.SaveChanges();
         }
 
-        public void Save()
+        public T FindObjectID(T obj)
         {
+            return data.Find(obj);
+        }
+
+        public void Save()
+        {            
             db.SaveChanges();
         }
 

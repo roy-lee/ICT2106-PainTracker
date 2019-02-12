@@ -5,20 +5,22 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ExploreCalifornia.Models;
 using Microsoft.AspNetCore.Http;
-using MedicineIntake.Data;
+using PainTracker.Data;
+using PainTracker.Models;
+using System.Text;
 
-namespace ExploreCalifornia.Controllers
+namespace PainTracker.Controllers
 {
     public class MedicinesController : Controller
     {
-        private NewMedicineGateway newMedicineGateway = new NewMedicineGateway();
+        private DataGateway<Medicine> medicineGateway = new DataGateway<Medicine>();
+        private DataGateway<Image> imageGateway = new DataGateway<Image>();
 
         // GET: Medicines
         public ActionResult Index()
         {
-            return View(newMedicineGateway.SelectAll());
+            return View(medicineGateway.SelectAll());
         }
 
      
@@ -37,18 +39,21 @@ namespace ExploreCalifornia.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var med = new Medicine
-                //{
-                //    MedName = Request.Form["Name"],
-                //    MedDescription = Request.Form["Description"],
-                //    MedType = Request.Form["MedType"],
-                //    IssuedDate = Convert.ToDateTime(Request.Form["Price"]),
-                //    ExpiryDate = Convert.ToDateTime(Request.Form["Rating"]),
-                //    //IncludesMeals = Convert.ToBoolean(Request.Form["IncludesMeals"])
-                //};
-                
+                Medicine med = new Medicine
+                {
+                    MedName = Request.Form["medicine.MedName"],
+                    MedDescription = Request.Form["medicine.MedDescription"],
+                    MedType = Request.Form["medicine.MedType"],
+                };
 
-                //newMedicineGateway.Insert(med);
+                medicineGateway.Insert(med);                
+                Image image = new Image
+                {
+                    ImgID = med.MedID,
+                    MedImage = Encoding.BigEndianUnicode.GetBytes(Request.Form["img.MedImage"]),
+                };
+
+                imageGateway.Insert(image);
                 return RedirectToAction(nameof(Index));
             }
             return RedirectToAction(nameof(Index));
@@ -62,7 +67,8 @@ namespace ExploreCalifornia.Controllers
                 return NotFound();
             }
 
-            Medicine medicine = newMedicineGateway.SelectById(id);
+            Medicine medicine = medicineGateway.SelectById(id);
+           
             if (medicine == null)
             {
                 return NotFound();
@@ -75,24 +81,14 @@ namespace ExploreCalifornia.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(IFormCollection collection)
-        {
-            if (ModelState.IsValid)
-            {
-                //Tour tour = new Tour
-                //{
-                //    Name = Request.Form["Name"],
-                //    Description = Request.Form["Description"],
-                //    Length = Convert.ToInt32(Request.Form["Length"]),
-                //    Price = Convert.ToDecimal(Request.Form["Price"]),
-                //    Rating = Request.Form["Rating"],
-                //    //IncludesMeals = Convert.ToBoolesan(Request.Form["IncludesMeals"])
-                //};
-
-                //newMedicineGateway.Insert(tour);
-                return RedirectToAction(nameof(Index));
-            }
-            return RedirectToAction(nameof(Index));
+        public ActionResult Edit(int id,IFormCollection collection)
+        {            
+            Medicine medicine = medicineGateway.SelectById(id);
+            medicine.MedName = Request.Form["MedName"];
+            medicine.MedDescription = Request.Form["MedDescription"];
+            medicine.MedType = Request.Form["MedType"];
+            medicineGateway.Update(medicine);
+            return RedirectToAction(nameof(Index));            
         }
 
         // GET: Medicines/Delete/5
@@ -103,7 +99,7 @@ namespace ExploreCalifornia.Controllers
                 return NotFound();
             }
 
-            Medicine medicine = newMedicineGateway.SelectById(id);
+            Medicine medicine = medicineGateway.SelectById(id);            
             if (medicine == null)
             {
                 return NotFound();
@@ -117,7 +113,7 @@ namespace ExploreCalifornia.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            newMedicineGateway.Delete(id);
+            medicineGateway.Delete(id);
             return RedirectToAction(nameof(Index));
         }
 
